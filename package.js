@@ -6,7 +6,8 @@ Package.describe({
 })
 
 Package.onUse(function(api) {
-    api.use(['coffeescript'], ['client', 'server'])
+    api.use(['mongo'], ['client', 'server'])
+    api.use(['coffeescript@1.0.10'], ['client', 'server'])
     api.addFiles('events.coffee')
     api.export('Events', ['client', 'server'])
 })

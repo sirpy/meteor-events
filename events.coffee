@@ -1,4 +1,4 @@
-@Events = new Meteor.Collection 'Events'
+Events = new Meteor.Collection 'Events'
 Events.handlers = {}
 
 mergeNoConflict = (objTo, objFrom) ->
