@@ -14,7 +14,7 @@ runHandler = (name, data...) ->
 upsert = (name, data...) ->
   runHandler name, data...
   Events.upsert name:name,
-    $set: {data: data, date: new Date},
+    $set: {data: data, date: new Date,server:!this.connection,client:this.userId},
     (err, args...) ->
       if err? then console.error 'update failed', err
       #else console.log 'updated', (data.concat args)...
