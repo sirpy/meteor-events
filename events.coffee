@@ -12,7 +12,7 @@ runHandler = (name, data...) ->
     (fn data...) for fn in handlers
 
 upsert = (name, data...) ->
-  runHandler name, data...
+  runHandler name, {server:!this.connection,client:this.userId}, data...
   Events.upsert name:name,
     $set: {data: data, date: new Date,server:!this.connection,client:this.userId},
     (err, args...) ->
@@ -50,7 +50,8 @@ else if Meteor.isClient
     Meteor.subscribe "events-#{name}", name
 
     Events.find(name:name).observe
-      changed: (id, event) -> if event? then fn event.data...
+      changed: (id, event) ->
+        if event? then fn {server:event.server,client:event.client}, event.data...
 
   mergeNoConflict Events,
     on: (name, fn) -> subscribeToEvent name, fn

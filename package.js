@@ -1,8 +1,8 @@
 Package.describe({
     summary: 'Client & Server events',
-    version: '0.0.2',
-    name: 'mcbrumagin:meteor-events',
-    git: 'https://github.com/mcbrumagin/meteor-events.git'
+    version: '0.0.1',
+    name: 'sirpy:meteor-events',
+    git: 'https://github.com/sirpy/meteor-events.git'
 })
 
 Package.onUse(function(api) {
